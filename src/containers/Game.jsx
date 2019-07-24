@@ -12,7 +12,9 @@ class Game extends Component {
 
   shuffleDeck = () => {
     this.setState(
-      {}
+      {
+        deck: Array.from({length: 52}, (v, k) => k + 1 )
+      }
     )
   }
 
@@ -25,6 +27,7 @@ class Game extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="game">
         <h1>New Game!</h1>
