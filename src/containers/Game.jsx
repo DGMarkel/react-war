@@ -24,6 +24,9 @@ class Game extends Component {
         ? this.setState(prevState => ({ playerOne: [...prevState.playerOne.concat(i)]}))
         : this.setState(prevState => ({ playerTwo: [...prevState.playerTwo.concat(i)]}))
     }
+    this.setState({
+      deck: []
+    })
   }
 
   render() {
