@@ -19,11 +19,10 @@ class Game extends Component {
   }
 
   deal = () => {
-    for(let i = 0; i <= 52; i++) {
-      console.log(i)
-      i % 2 == 0
-      ? this.setState({ ...this.state, playerOne: this.state.playerOne.concat(i)})
-      : this.setState({ ...this.state, playerTwo: [...this.state.playerTwo, i]})
+    for(let i = 1; i <= 52; i++) {
+      (i % 2 == 0)
+        ? this.setState(prevState => ({ playerOne: [...prevState.playerOne.concat(i)]}))
+        : this.setState(prevState => ({ playerTwo: [...prevState.playerTwo.concat(i)]}))
     }
   }
 
