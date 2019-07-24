@@ -13,7 +13,6 @@ class Game extends Component {
   }
 
   componentDidMount() {
-    this.winner()
     for (let i = 0; i<=3; i++) {
       this.setState(prevState => ({
           deck: [...prevState.deck.concat(Array.from({length: 13}, (v, k) => k + 1 ))]
@@ -40,8 +39,19 @@ class Game extends Component {
     }
   }
 
-  playCards = () => {
+  turn = () => {
+    winner();
+    if !this.state.winner {
+      let playerOneCard = this.state.playerOne[0]
+      let playerTwoCard = this.state.playerTwo[0]
 
+      if (playerOneCard > playerTwoCard && playerOneCard !== playerTwoCard) {
+
+      }
+      else if (playerOneCard === playerTwoCard) {
+
+      }
+    }
   }
 
   war = () => {
