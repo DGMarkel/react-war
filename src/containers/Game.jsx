@@ -43,7 +43,7 @@ class Game extends Component {
   }
 
   turn = () => {
-    this.winner();
+    this.winner(); // checks to see if either player has won
     if (!this.state.winner) {
       let playerOneCard = this.state.playerOne[0];
       let playerTwoCard = this.state.playerTwo[0];
@@ -79,6 +79,7 @@ class Game extends Component {
     }
   }
 
+  // moves winning card to bottom of winner's deck
   winningHand = hand => {
     let winning = hand.slice(1)
     winning.push(hand[0])
