@@ -7,10 +7,13 @@ class Game extends Component {
       deck: [],
       playerOne: [],
       playerTwo: [],
+      gameIsInPlay: false,
+      winner: false,
     }
   }
 
   componentDidMount() {
+    this.winner()
     for (let i = 0; i<=3; i++) {
       this.setState(prevState => ({
           deck: [...prevState.deck.concat(Array.from({length: 13}, (v, k) => k + 1 ))]
@@ -46,7 +49,20 @@ class Game extends Component {
   }
 
   winner = () => {
-
+    let winner = "The game is still in play";
+    if (this.state.playerOne.length === 0 && this.state.gameIsInPlay) {
+      this.setState({
+        winner: true
+      })
+      winner = "Player One"
+    }
+    if (this.state.playerTwo.length === 0 && this.state.gameIsInPlay) {
+      this.setState({
+        winner: true
+      })
+      winner = "Player Two"
+    }
+    return winner
   }
 
   render() {
