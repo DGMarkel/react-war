@@ -18,7 +18,7 @@ class Game extends Component {
     }
   }
 
-  shuffleDeck = () => {
+  shuffleCards = () => {
     let deck = this.state.deck
     for (let i = deck.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
@@ -29,7 +29,7 @@ class Game extends Component {
     })
   }
 
-  deal = () => {
+  dealCards = () => {
     for(let i = 0; i <= 51; i++) {
       (i % 2 === 0)
         ? this.setState(prevState => ({ playerOne: [...prevState.playerOne.concat(this.state.deck[i])]}))
@@ -37,13 +37,25 @@ class Game extends Component {
     }
   }
 
+  playCards = () => {
+
+  }
+
+  war = () => {
+
+  }
+
+  winner = () => {
+
+  }
+
   render() {
     console.log(this.state)
     return (
       <div className="game">
         <h1>New Game!</h1>
-        <button onClick={()=>{this.shuffleDeck()}}>Shuffle!</button>
-        <button onClick={()=>{this.deal()}}>Deal Cards!</button>
+        <button onClick={()=>{this.shuffleCards()}}>Shuffle!</button>
+        <button onClick={()=>{this.dealCards()}}>Deal Cards!</button>
       </div>
     )
   }
