@@ -4,29 +4,37 @@ class Game extends Component {
   constructor() {
     super();
     this.state={
-      deck: Array.from({length: 52}, (v, k) => k + 1 ),
+      deck: [],
       playerOne: [],
       playerTwo: [],
     }
   }
 
+  componentDidMount() {
+    for (let i = 0; i<=3; i++) {
+      this.setState(prevState => ({
+          deck: [...prevState.deck.concat(Array.from({length: 13}, (v, k) => k + 1 ))]
+      }))
+    }
+  }
+
   shuffleDeck = () => {
-    this.setState(
-      {
-        deck: Array.from({length: 52}, (v, k) => k + 1 )
-      }
-    )
+    let deck = this.state.deck
+    for (let i = deck.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+      [deck[i], deck[j]] = [deck[j], deck[i]]; // swap elements
+    }
+    this.setState({
+      deck: deck
+    })
   }
 
   deal = () => {
-    for(let i = 1; i <= 52; i++) {
-      (i % 2 == 0)
-        ? this.setState(prevState => ({ playerOne: [...prevState.playerOne.concat(i)]}))
-        : this.setState(prevState => ({ playerTwo: [...prevState.playerTwo.concat(i)]}))
+    for(let i = 0; i <= 51; i++) {
+      (i % 2 === 0)
+        ? this.setState(prevState => ({ playerOne: [...prevState.playerOne.concat(this.state.deck[i])]}))
+        : this.setState(prevState => ({ playerTwo: [...prevState.playerTwo.concat(this.state.deck[i])]}))
     }
-    this.setState({
-      deck: []
-    })
   }
 
   render() {
