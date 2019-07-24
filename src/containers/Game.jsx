@@ -47,24 +47,30 @@ class Game extends Component {
     if (!this.state.winner) {
       let playerOneCard = this.state.playerOne[0];
       let playerTwoCard = this.state.playerTwo[0];
+      let losingHand
 
       if (playerOneCard > playerTwoCard && playerOneCard !== playerTwoCard) {
+        losingHand = this.state.playerTwo.slice(1)
         this.setState(prevState => (
           {
             playerOne: [...prevState.playerOne.concat(this.state.playerTwo[0])],
-            playerTwo: [...prevState.playerTwo.shift()]
+            playerTwo: losingHand
           }
         ))
         console.log("player one wins the turn")
+        console.log(this.state.playerTwo.slice(1))
       }
       else if (playerTwoCard > playerOneCard && playerTwoCard !== playerOneCard) {
+        losingHand = this.state.playerOne.slice(1)
         this.setState(prevState => (
           {
             playerTwo: [...prevState.playerTwo.concat(this.state.playerOne[0])],
-            playerOne: [...prevState.playerOne.shift()]
+            playerOne: losingHand
           }
         ))
         console.log("player two wins the turn")
+        console.log(this.state.playerOne.slice(1))
+
       }
       else if (playerOneCard === playerTwoCard) {
         this.war();
