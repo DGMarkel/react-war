@@ -16,7 +16,7 @@ class App extends Component {
         {
           this.state.startGame
             ? <Game />
-            : <button>Let's Play!</button>
+            : <button onClick={() => {this.setState({startGame: true})}}>Let's Play!</button>
         }
       </div>
     );
