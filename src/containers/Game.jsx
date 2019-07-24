@@ -48,12 +48,14 @@ class Game extends Component {
       let playerOneCard = this.state.playerOne[0];
       let playerTwoCard = this.state.playerTwo[0];
       let losingHand
+      let winningHand
 
       if (playerOneCard > playerTwoCard && playerOneCard !== playerTwoCard) {
         losingHand = this.state.playerTwo.slice(1)
+
         this.setState(prevState => (
           {
-            playerOne: [...prevState.playerOne.concat(this.state.playerTwo[0])],
+            playerOne: this.winningHand(this.state.playerOne).concat(this.state.playerTwo[0]),
             playerTwo: losingHand
           }
         ))
@@ -61,9 +63,10 @@ class Game extends Component {
       }
       else if (playerTwoCard > playerOneCard && playerTwoCard !== playerOneCard) {
         losingHand = this.state.playerOne.slice(1)
+        this.winningHand(this.state.playerTwo)
         this.setState(prevState => (
           {
-            playerTwo: [...prevState.playerTwo.concat(this.state.playerOne[0])],
+            playerTwo: this.winningHand(this.state.playerTwo).concat(this.state.playerOne[0]),
             playerOne: losingHand
           }
         ))
@@ -74,6 +77,12 @@ class Game extends Component {
         this.war();
       }
     }
+  }
+
+  winningHand = hand => {
+    let winning = hand.slice(1)
+    winning.push(hand[0])
+    return winning
   }
 
   war = () => {
