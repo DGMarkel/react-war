@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 
 class Game extends Component {
+  constructor() {
+    super();
+    this.state={
+      deck: [],
+      playerOne: [],
+      playerTwo: [],
+    }
+  }
 
   render() {
     return (
