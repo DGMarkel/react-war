@@ -58,7 +58,6 @@ class Game extends Component {
           }
         ))
         console.log("player one wins the turn")
-        console.log(this.state.playerTwo.slice(1))
       }
       else if (playerTwoCard > playerOneCard && playerTwoCard !== playerOneCard) {
         losingHand = this.state.playerOne.slice(1)
@@ -69,7 +68,6 @@ class Game extends Component {
           }
         ))
         console.log("player two wins the turn")
-        console.log(this.state.playerOne.slice(1))
 
       }
       else if (playerOneCard === playerTwoCard) {
@@ -80,6 +78,33 @@ class Game extends Component {
 
   war = () => {
     console.log("war!")
+    let playerOne = this.state.playerOne.slice(0,3)
+    let playerTwo = this.state.playerTwo.slice(0,3)
+    let warCounter = 1
+    let losingHand
+
+    if (playerOne[2] > playerTwo[2]) {
+      losingHand = this.state.playerTwo.slice(3 * warCounter)
+      console.log(losingHand)
+      console.log("player one wins the turn")
+      this.setState(prevState => ({
+        playerOne: [...prevState.playerOne.concat(playerTwo)],
+        playerTwo: losingHand
+      }))
+    }
+    else if (playerOne[2] < playerTwo[2]) {
+      losingHand = this.state.playerOne.slice(3 * warCounter)
+      console.log(losingHand)
+      console.log("player two wins the turn")
+      this.setState(prevState => ({
+        playerOne: losingHand,
+        playerTwo: [...prevState.playerTwo.concat(playerOne)]
+      }))
+    }
+    else {
+      warCounter++
+      this.war();
+    }
   }
 
   winner = () => {
