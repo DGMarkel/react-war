@@ -6,30 +6,22 @@ class App extends Component {
   constructor() {
     super();
     this.state={
-      startGame: false
+      startGame: false,
     }
   }
-}
 
-function App() {
-  return (
-    <div className="War!">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  render() {
+    return (
+      <div className="War!">
+        {
+          this.state.startGame
+            ? <Game />
+            : <button>Let's Play!</button>
+        }
+      </div>
+    );
+  }
+
 }
 
 export default App;
