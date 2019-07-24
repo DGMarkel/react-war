@@ -31,6 +31,7 @@ class Game extends Component {
     return (
       <div className="game">
         <h1>New Game!</h1>
+        <button onClick={()=>{this.shuffleDeck()}}>Shuffle!</button>
       </div>
     )
   }
