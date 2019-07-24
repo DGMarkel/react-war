@@ -46,7 +46,20 @@ class Game extends Component {
       let playerTwoCard = this.state.playerTwo[0];
 
       if (playerOneCard > playerTwoCard && playerOneCard !== playerTwoCard) {
-
+        this.setState(prevState => (
+          {
+            playerOne: [...prevState.playerOne.concat(this.state.playerTwo[0])],
+            playerTwo: [...prevState.playerTwo.shift()]
+          }
+        ))
+      }
+      if (playerTwoCard > playerOneCard && playerTwoCard !== playerOneCard) {
+        this.setState(prevState => (
+          {
+            playerTwo: [...prevState.playerTwo.concat(this.state.playerOne[0])],
+            playerOne: [...prevState.playerOne.shift()]
+          }
+        ))
       }
       else if (playerOneCard === playerTwoCard) {
         this.war();
