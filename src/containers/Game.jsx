@@ -40,16 +40,16 @@ class Game extends Component {
   }
 
   turn = () => {
-    winner();
-    if !this.state.winner {
-      let playerOneCard = this.state.playerOne[0]
-      let playerTwoCard = this.state.playerTwo[0]
+    this.winner();
+    if (!this.state.winner) {
+      let playerOneCard = this.state.playerOne[0];
+      let playerTwoCard = this.state.playerTwo[0];
 
       if (playerOneCard > playerTwoCard && playerOneCard !== playerTwoCard) {
 
       }
       else if (playerOneCard === playerTwoCard) {
-
+        this.war();
       }
     }
   }
@@ -72,7 +72,7 @@ class Game extends Component {
       })
       winner = "Player Two"
     }
-    return winner
+    console.log(winner)
   }
 
   render() {
