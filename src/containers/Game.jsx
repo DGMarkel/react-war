@@ -32,6 +32,9 @@ class Game extends Component {
   }
 
   dealCards = () => {
+    this.setState({
+      gameIsInPlay: true
+    })
     for(let i = 0; i <= 51; i++) {
       (i % 2 === 0)
         ? this.setState(prevState => ({ playerOne: [...prevState.playerOne.concat(this.state.deck[i])]}))
@@ -52,14 +55,16 @@ class Game extends Component {
             playerTwo: [...prevState.playerTwo.shift()]
           }
         ))
+        console.log("player one wins the turn")
       }
-      if (playerTwoCard > playerOneCard && playerTwoCard !== playerOneCard) {
+      else if (playerTwoCard > playerOneCard && playerTwoCard !== playerOneCard) {
         this.setState(prevState => (
           {
             playerTwo: [...prevState.playerTwo.concat(this.state.playerOne[0])],
             playerOne: [...prevState.playerOne.shift()]
           }
         ))
+        console.log("player two wins the turn")
       }
       else if (playerOneCard === playerTwoCard) {
         this.war();
@@ -68,7 +73,7 @@ class Game extends Component {
   }
 
   war = () => {
-
+    console.log("war!")
   }
 
   winner = () => {
@@ -95,6 +100,7 @@ class Game extends Component {
         <h1>New Game!</h1>
         <button onClick={()=>{this.shuffleCards()}}>Shuffle!</button>
         <button onClick={()=>{this.dealCards()}}>Deal Cards!</button>
+        <button onClick={()=>{this.turn()}}>Play a turn</button>
       </div>
     )
   }
