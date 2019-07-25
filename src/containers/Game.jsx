@@ -101,9 +101,9 @@ class Game extends Component {
 
   war = () => {
     console.log("war!")
-    let playerOne = this.state.playerOne.slice(0,3) // cards player one puts in play
-    let playerTwo = this.state.playerTwo.slice(0,3) // cards player two puts in play
     let warCounter = 1 // consecutive number of times war has is played in a single turn
+    let playerOne = this.state.playerOne.slice(0,3 * warCounter) // cards player one puts in play -- warCounter determines number of cards in play
+    let playerTwo = this.state.playerTwo.slice(0,3 * warCounter) // cards player two puts in play
     let losingHand
 
     if (playerOne[2] > playerTwo[2]) {
@@ -126,7 +126,7 @@ class Game extends Component {
       })
     }
 
-    else {
+    else if (playerOne[2] === playerTwo[2]) {
       // if war must be played again, add 1 to warCounter and call war method
       warCounter++
       this.war();
