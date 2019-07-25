@@ -13,6 +13,7 @@ class Game extends Component {
   }
 
   componentDidMount() {
+    // builds deck of cards with 4 suits of 13 cards
     for (let i = 0; i<=3; i++) {
       this.setState(prevState => ({
           deck: [...prevState.deck.concat(Array.from({length: 13}, (v, k) => k + 1 ))]
@@ -48,31 +49,38 @@ class Game extends Component {
       let playerOneCard = this.state.playerOne[0];
       let playerTwoCard = this.state.playerTwo[0];
       let losingHand
-      let winningHand
 
+      // playerOne wins the turn
       if (playerOneCard > playerTwoCard && playerOneCard !== playerTwoCard) {
+        // removes losing card from loser's deck
         losingHand = this.state.playerTwo.slice(1)
 
-        this.setState(prevState => (
+        this.setState(
           {
+            // moves winner's take to bottom of their deck
             playerOne: this.winningHand(this.state.playerOne).concat(this.state.playerTwo[0]),
             playerTwo: losingHand
           }
-        ))
+        )
         console.log("player one wins the turn")
       }
+
+      // playerTwo wins the turn
       else if (playerTwoCard > playerOneCard && playerTwoCard !== playerOneCard) {
+        // removes losing card from loser's deck
         losingHand = this.state.playerOne.slice(1)
-        this.winningHand(this.state.playerTwo)
-        this.setState(prevState => (
+
+        this.setState(
           {
+            // moves winner's take to bottom of their deck
             playerTwo: this.winningHand(this.state.playerTwo).concat(this.state.playerOne[0]),
             playerOne: losingHand
           }
-        ))
+        )
         console.log("player two wins the turn")
 
       }
+      // players draw the same card
       else if (playerOneCard === playerTwoCard) {
         this.war();
       }
