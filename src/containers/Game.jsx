@@ -94,8 +94,9 @@ class Game extends Component {
     return winning
   }
 
-  warWinner = (deck, warCounter) => {
-    return deck.slice(3 * warCounter).concat(deck.slice(0, 3 * warCounter))
+  warWinner = (winningDeck, losingDeck, warCounter) => {
+    // moves winning cards to bottom of winner's deck
+    return winningDeck.slice(3 * warCounter).concat(winningDeck.slice(0, 3 * warCounter), losingDeck.slice(0, 3 * warCounter))
   }
 
   war = () => {
@@ -106,22 +107,25 @@ class Game extends Component {
     let losingHand
 
     if (playerOne[2] > playerTwo[2]) {
-      console.log(this.warWinner(this.state.playerOne, warCounter))
       losingHand = this.state.playerTwo.slice(3 * warCounter)
       console.log("player one wins the turn")
-      this.setState(prevState => ({
-        playerOne: this.warWinner(this.state.playerOne, warCounter).concat(this.state.playerTwo.slice(0, 3 * warCounter)),
-        playerTwo: losingHand
-      }))
+
+      this.setState({
+          playerOne: this.warWinner(this.state.playerOne, this.state.playerTwo, warCounter),
+          playerTwo: losingHand
+        })
     }
+
     else if (playerOne[2] < playerTwo[2]) {
       losingHand = this.state.playerOne.slice(3 * warCounter)
       console.log("player two wins the turn")
-      this.setState(prevState => ({
+
+      this.setState({
         playerOne: losingHand,
-        playerTwo: this.warWinner(this.state.playerTwo, warCounter).concat(this.state.playerOne.slice(0, 3 * warCounter))
-      }))
+        playerTwo: this.warWinner(this.state.playerTwo, this.state.playerOne, warCounter)
+      })
     }
+
     else {
       warCounter++
       this.war();
