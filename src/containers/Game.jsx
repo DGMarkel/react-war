@@ -43,7 +43,7 @@ class Game extends Component {
     }
   }
 
-  turn = () => {
+  playCard = () => {
     this.winner(); // checks to see if either player has won
     if (!this.state.winner) {
       let playerOneCard = this.state.playerOne[0];
@@ -58,7 +58,7 @@ class Game extends Component {
         this.setState(
           {
             // moves winner's take to bottom of their deck
-            playerOne: this.winningHand(this.state.playerOne).concat(this.state.playerTwo[0]),
+            playerOne: this.winningCard(this.state.playerOne).concat(this.state.playerTwo[0]),
             playerTwo: losingHand
           }
         )
@@ -73,7 +73,7 @@ class Game extends Component {
         this.setState(
           {
             // moves winner's take to bottom of their deck
-            playerTwo: this.winningHand(this.state.playerTwo).concat(this.state.playerOne[0]),
+            playerTwo: this.winningCard(this.state.playerTwo).concat(this.state.playerOne[0]),
             playerOne: losingHand
           }
         )
@@ -88,9 +88,9 @@ class Game extends Component {
   }
 
   // moves winning card to bottom of winner's deck
-  winningHand = hand => {
-    let winning = hand.slice(1)
-    winning.push(hand[0])
+  winningCard = deck => {
+    let winning = deck.slice(1)
+    winning.push(deck[0])
     return winning
   }
 
@@ -149,7 +149,7 @@ class Game extends Component {
         <h1>New Game!</h1>
         <button onClick={()=>{this.shuffleCards()}}>Shuffle!</button>
         <button onClick={()=>{this.dealCards()}}>Deal Cards!</button>
-        <button onClick={()=>{this.turn()}}>Play a turn</button>
+        <button onClick={()=>{this.playCard()}}>Play a turn</button>
       </div>
     )
   }
