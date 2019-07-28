@@ -89,44 +89,63 @@ class Game extends Component {
     return winningDeck
   }
 
-  warWinner = (winningDeck, losingDeck, warCounter) => {
+  warWinner = (winningDeck, losingDeck, i) => {
     // moves winning cards to bottom of winner's deck
-    return winningDeck.slice(3 * warCounter).concat(winningDeck.slice(0, 3 * warCounter), losingDeck.slice(0, 3 * warCounter))
+    return winningDeck.slice(i + 1).concat(winningDeck.slice(0, i + 1), losingDeck.slice(0, i + 1))
   }
 
   war = () => {
     console.log("war!")
-    let warCounter = 1 // consecutive number of times war has is played in a single turn
-    let playerOne = this.state.playerOne.slice(0,3 * warCounter) // cards player one puts in play -- warCounter determines number of cards in play
-    let playerTwo = this.state.playerTwo.slice(0,3 * warCounter) // cards player two puts in play
-    let losingHand
-
-    if (playerOne[playerOne.length - 1] > playerTwo[playerTwo.length - 1]) {
-      losingHand = this.state.playerTwo.slice(3 * warCounter) // cards remaining in losing deck after war is played
-      console.log("player one wins the turn")
-
-      this.setState({
-          playerOne: this.warWinner(this.state.playerOne, this.state.playerTwo, warCounter),
-          playerTwo: losingHand
-        })
+    for (let i = 2; i < 17 ; i += 3) {
+      if (this.state.playerOne[i] > this.state.playerTwo[i]) {
+        this.setState( prevState => ({
+          playerOne: this.warWinner(prevState.playerOne, prevState.playerTwo, i),
+          playerTwo: prevState.playerTwo.slice(i + 1)
+        }))
+        return console.log("playerOne Wins!")
+      }
+      else if (this.state.playerTwo[i] > this.state.playerOne[i]) {
+        this.setState( prevState => ({
+          playerOne: prevState.playerOne.slice(i + 1),
+          playerTwo: this.warWinner(prevState.playerTwo, prevState.playerOne, i)
+        }))
+        return console.log("playerTwo Wins!")
+      }
+      else if (this.state.playerTwo[i + 3] === this.state.playerOne[i + 3]) {
+        return this.war()
+      }
     }
-
-    else if (playerOne[playerOne.length - 1] < playerTwo[playerTwo.length - 1]) {
-      losingHand = this.state.playerOne.slice(3 * warCounter) // cards remaining in losing deck after war is played
-      console.log("player two wins the turn")
-
-      this.setState({
-        playerOne: losingHand,
-        playerTwo: this.warWinner(this.state.playerTwo, this.state.playerOne, warCounter)
-      })
-    }
-
-    else if (playerOne[playerOne.length - 1] === playerTwo[playerTwo.length -1]) {
-      // if war must be played again, add 1 to warCounter and call war method
-      // buggy...war gets called in infinite loop...probably issue with warCounter
-      warCounter++
-      this.war();
-    }
+    // let warCounter = 1 // consecutive number of times war has is played in a single turn
+    // let playerOne = this.state.playerOne.slice(0,3 * warCounter) // cards player one puts in play -- warCounter determines number of cards in play
+    // let playerTwo = this.state.playerTwo.slice(0,3 * warCounter) // cards player two puts in play
+    // let losingHand
+    //
+    // if (playerOne[playerOne.length - 1] > playerTwo[playerTwo.length - 1]) {
+    //   losingHand = this.state.playerTwo.slice(3 * warCounter) // cards remaining in losing deck after war is played
+    //   console.log("player one wins the turn")
+    //
+    //   this.setState({
+    //       playerOne: this.warWinner(this.state.playerOne, this.state.playerTwo, warCounter),
+    //       playerTwo: losingHand
+    //     })
+    // }
+    //
+    // else if (playerOne[playerOne.length - 1] < playerTwo[playerTwo.length - 1]) {
+    //   losingHand = this.state.playerOne.slice(3 * warCounter) // cards remaining in losing deck after war is played
+    //   console.log("player two wins the turn")
+    //
+    //   this.setState({
+    //     playerOne: losingHand,
+    //     playerTwo: this.warWinner(this.state.playerTwo, this.state.playerOne, warCounter)
+    //   })
+    // }
+    //
+    // else if (playerOne[playerOne.length - 1] === playerTwo[playerTwo.length -1]) {
+    //   // if war must be played again, add 1 to warCounter and call war method
+    //   // buggy...war gets called in infinite loop...probably issue with warCounter
+    //   warCounter++
+    //   this.war();
+    // }
   }
 
   winner = () => {
