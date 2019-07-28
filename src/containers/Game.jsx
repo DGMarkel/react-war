@@ -50,7 +50,7 @@ class Game extends Component {
       let playerTwoCard = this.state.playerTwo[0];
 
       // playerOne wins the turn
-      if (playerOneCard > playerTwoCard && playerOneCard !== playerTwoCard) {
+      if (playerOneCard > playerTwoCard) {
 
         this.setState( prevState => (
           {
@@ -63,7 +63,7 @@ class Game extends Component {
       }
 
       // playerTwo wins the turn
-      else if (playerTwoCard > playerOneCard && playerTwoCard !== playerOneCard) {
+      else if (playerTwoCard > playerOneCard) {
 
         this.setState( prevState => (
           {
