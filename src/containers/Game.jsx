@@ -48,35 +48,30 @@ class Game extends Component {
     if (!this.state.winner) {
       let playerOneCard = this.state.playerOne[0];
       let playerTwoCard = this.state.playerTwo[0];
-      let losingHand
 
       // playerOne wins the turn
       if (playerOneCard > playerTwoCard && playerOneCard !== playerTwoCard) {
-        // removes losing card from loser's deck
-        losingHand = this.state.playerTwo.slice(1)
 
-        this.setState(
+        this.setState( prevState => (
           {
             // moves winner's take to bottom of their deck
-            playerOne: this.winningCard(this.state.playerOne).concat(this.state.playerTwo[0]),
-            playerTwo: losingHand
+            playerOne: this.winningCard(prevState.playerOne).concat(prevState.playerTwo[0]),
+            playerTwo: prevState.playerTwo.slice(1)  // removes losing card from loser's deck
           }
-        )
+        ))
         console.log("player one wins the turn")
       }
 
       // playerTwo wins the turn
       else if (playerTwoCard > playerOneCard && playerTwoCard !== playerOneCard) {
-        // removes losing card from loser's deck
-        losingHand = this.state.playerOne.slice(1)
 
-        this.setState(
+        this.setState( prevState => (
           {
             // moves winner's take to bottom of their deck
-            playerTwo: this.winningCard(this.state.playerTwo).concat(this.state.playerOne[0]),
-            playerOne: losingHand
+            playerTwo: this.winningCard(prevState.playerTwo).concat(prevState.playerOne[0]),
+            playerOne: prevState.playerOne.slice(1)  // removes losing card from loser's deck
           }
-        )
+        ))
         console.log("player two wins the turn")
 
       }
@@ -106,7 +101,7 @@ class Game extends Component {
     let playerTwo = this.state.playerTwo.slice(0,3 * warCounter) // cards player two puts in play
     let losingHand
 
-    if (playerOne[2] > playerTwo[2]) {
+    if (playerOne[playerOne.length - 1] > playerTwo[playerTwo.length - 1]) {
       losingHand = this.state.playerTwo.slice(3 * warCounter) // cards remaining in losing deck after war is played
       console.log("player one wins the turn")
 
@@ -116,7 +111,7 @@ class Game extends Component {
         })
     }
 
-    else if (playerOne[2] < playerTwo[2]) {
+    else if (playerOne[playerOne.length - 1] < playerTwo[playerTwo.length - 1]) {
       losingHand = this.state.playerOne.slice(3 * warCounter) // cards remaining in losing deck after war is played
       console.log("player two wins the turn")
 
@@ -126,8 +121,9 @@ class Game extends Component {
       })
     }
 
-    else if (playerOne[2] === playerTwo[2]) {
+    else if (playerOne[playerOne.length - 1] === playerTwo[playerTwo.length -1]) {
       // if war must be played again, add 1 to warCounter and call war method
+      // buggy...war gets called in infinite loop...probably issue with warCounter
       warCounter++
       this.war();
     }
