@@ -103,18 +103,14 @@ class Game extends Component {
           playerOne: this.warWinner(prevState.playerOne, prevState.playerTwo, i),
           playerTwo: prevState.playerTwo.slice(i + 1) // add one to index to i to slice appropriate number of cards from deck
         }))
-        return console.log("playerOne Wins!")
+        return console.log(`playerOne won ${i + 1} cards!`)
       }
       else if (this.state.playerTwo[i] > this.state.playerOne[i]) {
         this.setState( prevState => ({
           playerOne: prevState.playerOne.slice(i + 1), // add one to index to i to slice appropriate number of cards from deck
           playerTwo: this.warWinner(prevState.playerTwo, prevState.playerOne, i)
         }))
-        return console.log("playerTwo Wins!")
-      }
-      else if (this.state.playerTwo[i + 3] === this.state.playerOne[i + 3]) {
-        console.log("Cards match again! Let's war!")
-        this.war()
+        return console.log(`playerTwo won ${i + 1} cards!`)
       }
     }
   }
