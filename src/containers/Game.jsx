@@ -5,8 +5,8 @@ class Game extends Component {
     super();
     this.state={
       deck: [],
-      playerOne: [],
-      playerTwo: [],
+      playerOne: [1,2,3,5,6,9,10,11,12], // hands are dealt after user hits deal button
+      playerTwo: [2,3,3,4,2,7,11,10,9],
       gameIsInPlay: false,
       winner: false,
     }
