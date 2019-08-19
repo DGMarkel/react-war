@@ -5,8 +5,8 @@ class Game extends Component {
     super();
     this.state={
       deck: [],
-      playerOne: [1,2,3,5,6,9,10,11,12], // hands are dealt after user hits deal button
-      playerTwo: [2,3,3,4,2,7,11,10,9],
+      playerOne: [], // hands are dealt after user hits deal button
+      playerTwo: [],
       gameIsInPlay: false,
       winner: false,
     }
@@ -91,12 +91,13 @@ class Game extends Component {
 
   warWinner = (winningDeck, losingDeck, i) => {
     // moves winner's played cards and take to bottom of winner's deck
+    console.log(i)
     return winningDeck.slice(i + 1).concat(winningDeck.slice(0, i + 1), losingDeck.slice(0, i + 1))
   }
 
   war = () => {
     console.log("war!")
-    // while players cards match at every third card on table, play war.
+
     for (let i = 2; i < 17 ; i += 3) {
       if (this.state.playerOne[i] > this.state.playerTwo[i]) {
         this.setState( prevState => ({
