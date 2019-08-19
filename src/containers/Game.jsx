@@ -116,8 +116,10 @@ class Game extends Component {
         }
       }
     }
+    // if either or both players has less than  cards in their hand
     else {
       console.log("not enough cards")
+      // if either player's card at position i != undefined, play player[i - 1] against player[]i
     }
   }
 
