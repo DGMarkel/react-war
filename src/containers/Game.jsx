@@ -97,6 +97,7 @@ class Game extends Component {
 
   war = () => {
     console.log("war!")
+    // both players have at least three cards in their hand
     if (this.state.playerOne.length >= 3 && this.state.playerTwo >= 3 ) {
       for (let i = 2; i < 17 ; i += 3) {
         if (this.state.playerOne[i] > this.state.playerTwo[i]) {
