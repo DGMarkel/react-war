@@ -100,8 +100,8 @@ class Game extends Component {
       for (let i = 2; i < 17 ; i += 3) {
         let playerOne;
         let playerTwo;
-        this.state.playerOne === undefined ? playerOne = this.state.playerOne.length - 1 : playerOne =  this.state.playerOne[i]
-        this.state.playerTwo === undefined ? playerTwo = this.state.playerTwo.length - 1 : playerTwo =  this.state.playerTwo[i]
+        this.state.playerOne[i] === undefined ? playerOne = this.state.playerOne.length - 1 : playerOne =  this.state.playerOne[i]
+        this.state.playerTwo[i] === undefined ? playerTwo = this.state.playerTwo.length - 1 : playerTwo =  this.state.playerTwo[i]
 
 
         if (this.state.playerOne[i] > this.state.playerTwo[i]) {
@@ -119,7 +119,6 @@ class Game extends Component {
           return console.log(`playerTwo won ${i + 1} cards!`)
         }
       }
-    }
   }
 
   winner = () => {
