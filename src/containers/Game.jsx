@@ -104,14 +104,14 @@ class Game extends Component {
         this.state.playerTwo[i] === undefined ? playerTwo = this.state.playerTwo.length - 1 : playerTwo =  this.state.playerTwo[i]
 
 
-        if (this.state.playerOne[i] > this.state.playerTwo[i]) {
+        if (playerOne > playerTwo) {
           this.setState( prevState => ({
             playerOne: this.warWinner(prevState.playerOne, prevState.playerTwo, i),
             playerTwo: prevState.playerTwo.slice(i + 1) // add one to index to i to slice appropriate number of cards from deck
           }))
           return console.log(`playerOne won ${i + 1} cards!`)
         }
-        else if (this.state.playerTwo[i] > this.state.playerOne[i]) {
+        else if (playerTwo > playerOne) {
           this.setState( prevState => ({
             playerOne: prevState.playerOne.slice(i + 1), // add one to index to i to slice appropriate number of cards from deck
             playerTwo: this.warWinner(prevState.playerTwo, prevState.playerOne, i)
