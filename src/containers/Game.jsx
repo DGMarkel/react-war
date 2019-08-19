@@ -5,8 +5,8 @@ class Game extends Component {
     super();
     this.state={
       deck: [],
-      playerOne: [], // hands are dealt after user hits deal button
-      playerTwo: [],
+      playerOne: [1,2,3], // hands are dealt after user hits deal button
+      playerTwo: [1,2],
       gameIsInPlay: false,
       winner: false,
     }
@@ -97,22 +97,26 @@ class Game extends Component {
 
   war = () => {
     console.log("war!")
-
-    for (let i = 2; i < 17 ; i += 3) {
-      if (this.state.playerOne[i] > this.state.playerTwo[i]) {
-        this.setState( prevState => ({
-          playerOne: this.warWinner(prevState.playerOne, prevState.playerTwo, i),
-          playerTwo: prevState.playerTwo.slice(i + 1) // add one to index to i to slice appropriate number of cards from deck
-        }))
-        return console.log(`playerOne won ${i + 1} cards!`)
+    if (this.state.playerOne.length >= 3 && this.state.playerTwo >= 3 ) {
+      for (let i = 2; i < 17 ; i += 3) {
+        if (this.state.playerOne[i] > this.state.playerTwo[i]) {
+          this.setState( prevState => ({
+            playerOne: this.warWinner(prevState.playerOne, prevState.playerTwo, i),
+            playerTwo: prevState.playerTwo.slice(i + 1) // add one to index to i to slice appropriate number of cards from deck
+          }))
+          return console.log(`playerOne won ${i + 1} cards!`)
+        }
+        else if (this.state.playerTwo[i] > this.state.playerOne[i]) {
+          this.setState( prevState => ({
+            playerOne: prevState.playerOne.slice(i + 1), // add one to index to i to slice appropriate number of cards from deck
+            playerTwo: this.warWinner(prevState.playerTwo, prevState.playerOne, i)
+          }))
+          return console.log(`playerTwo won ${i + 1} cards!`)
+        }
       }
-      else if (this.state.playerTwo[i] > this.state.playerOne[i]) {
-        this.setState( prevState => ({
-          playerOne: prevState.playerOne.slice(i + 1), // add one to index to i to slice appropriate number of cards from deck
-          playerTwo: this.warWinner(prevState.playerTwo, prevState.playerOne, i)
-        }))
-        return console.log(`playerTwo won ${i + 1} cards!`)
-      }
+    }
+    else {
+      console.log("not enough cards")
     }
   }
 
