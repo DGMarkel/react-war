@@ -97,9 +97,13 @@ class Game extends Component {
 
   war = () => {
     console.log("war!")
-    // both players have at least three cards in their hand
-    if (this.state.playerOne.length >= 3 && this.state.playerTwo >= 3 ) {
       for (let i = 2; i < 17 ; i += 3) {
+        let playerOne;
+        let playerTwo;
+        this.state.playerOne === undefined ? playerOne = this.state.playerOne.length - 1 : playerOne =  this.state.playerOne[i]
+        this.state.playerTwo === undefined ? playerTwo = this.state.playerTwo.length - 1 : playerTwo =  this.state.playerTwo[i]
+
+
         if (this.state.playerOne[i] > this.state.playerTwo[i]) {
           this.setState( prevState => ({
             playerOne: this.warWinner(prevState.playerOne, prevState.playerTwo, i),
@@ -115,11 +119,6 @@ class Game extends Component {
           return console.log(`playerTwo won ${i + 1} cards!`)
         }
       }
-    }
-    // if either or both players has less than  cards in their hand
-    else {
-      console.log("not enough cards")
-      // if either player's card at position i != undefined, play player[i - 1] against player[]i
     }
   }
 
