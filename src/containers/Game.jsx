@@ -146,7 +146,7 @@ class Game extends Component {
   }
 
   displayNewGameOptions = () => {
-    <div className="newGame">
+    <div className="new-game">
       <h1>New Game!</h1>
       <button onClick={()=>{this.shuffleCards()}}>Shuffle!</button>
       <button onClick={()=>{this.dealCards()}}>Deal Cards!</button>
