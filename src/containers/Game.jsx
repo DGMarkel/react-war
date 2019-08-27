@@ -97,6 +97,7 @@ class Game extends Component {
 
   war = () => {
     console.log("war!")
+      // iterates through a 52 card deck by three cards per increment
       for (let i = 2; i < 17 ; i += 3) {
         let playerOne;
         let playerTwo;
