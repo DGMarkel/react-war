@@ -13,7 +13,6 @@ code {
 }
 
 .card {
-  background-image: url("graphics/cardback.gif");
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
   border-style: solid;
