@@ -61,7 +61,7 @@ class Game extends Component {
           }
         ))
         console.log("player one wins the turn")
-        return this.displayCard(playerOneCard)
+        this.displayCard(playerOneCard)
       }
 
       // playerTwo wins the turn
@@ -82,10 +82,6 @@ class Game extends Component {
         this.war();
       }
     }
-  }
-
-  displayCard = rank => {
-    return <Card rank={rank} />
   }
 
   // moves winning card to bottom of winner's deck
@@ -145,15 +141,23 @@ class Game extends Component {
     console.log(winner)
   }
 
+  displayCard = rank => {
+    return <Card rank={rank} />
+  }
+
+  displayNewGameOptions = () => {
+    <div className="game">
+      <h1>New Game!</h1>
+      <button onClick={()=>{this.shuffleCards()}}>Shuffle!</button>
+      <button onClick={()=>{this.dealCards()}}>Deal Cards!</button>
+      <button onClick={()=>{this.playCard()}}>Play a turn</button>
+    </div>
+  }
+
   render() {
     console.log(this.state)
     return (
-      <div className="game">
-        <h1>New Game!</h1>
-        <button onClick={()=>{this.shuffleCards()}}>Shuffle!</button>
-        <button onClick={()=>{this.dealCards()}}>Deal Cards!</button>
-        <button onClick={()=>{this.playCard()}}>Play a turn</button>
-      </div>
+
     )
   }
 }
