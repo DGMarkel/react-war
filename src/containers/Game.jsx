@@ -142,22 +142,31 @@ class Game extends Component {
   }
 
   displayCard = rank => {
-    return <Card rank={rank} />
+    return (
+      <div>
+        <button onClick={()=>{this.playCard()}}>Play a turn</button>
+        <Card rank={rank} />
+      </div>
+    )
   }
 
   displayNewGameOptions = () => {
-    <div className="new-game">
-      <h1>New Game!</h1>
-      <button onClick={()=>{this.shuffleCards()}}>Shuffle!</button>
-      <button onClick={()=>{this.dealCards()}}>Deal Cards!</button>
-      <button onClick={()=>{this.playCard()}}>Play a turn</button>
-    </div>
+    return (
+      <div className="new-game">
+        <h1>New Game!</h1>
+        <button onClick={()=>{this.shuffleCards()}}>Shuffle!</button>
+        <button onClick={()=>{this.dealCards()}}>Deal Cards!</button>
+        <button onClick={()=>{this.playCard()}}>Play a turn</button>
+      </div>
+    )
   }
 
   render() {
     console.log(this.state)
     return (
-      <
+      <div className="game">
+        {this.state.gameIsInPlay ? this.displayCard() : this.displayNewGameOptions()}
+      </div>
     )
   }
 }
