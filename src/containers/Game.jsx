@@ -156,6 +156,7 @@ class Game extends Component {
       <div>
         <button onClick={()=>{this.playCard()}}>Play a turn</button>
         <Card rank={this.state.cardsInPlay.playerOneCard} />
+        <Card rank={this.state.cardsInPlay.playerTwoCard} />
       </div>
     )
   }
