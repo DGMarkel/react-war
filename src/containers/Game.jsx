@@ -10,6 +10,7 @@ class Game extends Component {
       playerTwo: [],
       gameIsInPlay: false,
       cardsInPlay: [],
+      gameState: "", // string indicating winner of hand
       winner: false,
     }
   }
