@@ -62,7 +62,8 @@ class Game extends Component {
           {
             // moves winner's take to bottom of their deck
             playerOne: this.winningCard(prevState.playerOne).concat(prevState.playerTwo[0]),
-            playerTwo: prevState.playerTwo.slice(1)  // removes losing card from loser's deck
+            playerTwo: prevState.playerTwo.slice(1),  // removes losing card from loser's deck
+            gameState: "player one wins the turn"
           }
         ))
         console.log("player one wins the turn")
@@ -76,7 +77,8 @@ class Game extends Component {
           {
             // moves winner's take to bottom of their deck
             playerTwo: this.winningCard(prevState.playerTwo).concat(prevState.playerOne[0]),
-            playerOne: prevState.playerOne.slice(1)  // removes losing card from loser's deck
+            playerOne: prevState.playerOne.slice(1),  // removes losing card from loser's deck
+            gameState: "player two wins the turn"
           }
         ))
         console.log("player two wins the turn")
@@ -84,6 +86,11 @@ class Game extends Component {
       }
       // players draw the same card
       else if (playerOneCard === playerTwoCard) {
+        this.setState(
+          {
+            gameState: "war!"
+          }
+        )
         this.war();
       }
     }
@@ -151,6 +158,7 @@ class Game extends Component {
       <div>
         <button onClick={()=>{this.playCard()}}>Play a turn</button>
         {this.state.cardsInPlay.map( card => <Card rank={card} />)}
+        <h1>{this.state.gameState}</h1>
       </div>
     )
   }
