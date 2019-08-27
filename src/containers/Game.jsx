@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import Card from '../components/Card'
 
 class Game extends Component {
   constructor() {
     super();
     this.state={
       deck: [],
-      playerOne: [1,2,3], // hands are dealt after user hits deal button
-      playerTwo: [1,2],
+      playerOne: [], // hands are dealt after user hits deal button
+      playerTwo: [],
       gameIsInPlay: false,
       winner: false,
     }
@@ -60,6 +61,7 @@ class Game extends Component {
           }
         ))
         console.log("player one wins the turn")
+        return this.displayCard(playerOneCard)
       }
 
       // playerTwo wins the turn
@@ -80,6 +82,10 @@ class Game extends Component {
         this.war();
       }
     }
+  }
+
+  displayCard = rank => {
+    return <Card rank={rank} />
   }
 
   // moves winning card to bottom of winner's deck
