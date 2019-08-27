@@ -9,10 +9,7 @@ class Game extends Component {
       playerOne: [], // hands are dealt after user hits deal button
       playerTwo: [],
       gameIsInPlay: false,
-      cardsInPlay: {
-        playerOneCard: null,
-        playerTwoCard: null
-      },
+      cardsInPlay: [],
       winner: false,
     }
   }
@@ -54,10 +51,7 @@ class Game extends Component {
       let playerOneCard = this.state.playerOne[0];
       let playerTwoCard = this.state.playerTwo[0];
       this.setState({
-        cardsInPlay: {
-          playerOneCard: playerOneCard,
-          playerTwoCard: playerTwoCard
-        }
+        cardsInPlay: [playerOneCard, playerTwoCard]
       })
 
       // playerOne wins the turn
@@ -155,8 +149,7 @@ class Game extends Component {
     return (
       <div>
         <button onClick={()=>{this.playCard()}}>Play a turn</button>
-        <Card rank={this.state.cardsInPlay.playerOneCard} />
-        <Card rank={this.state.cardsInPlay.playerTwoCard} />
+        {this.state.cardsInPlay.map( card => <Card rank={card} />)}
       </div>
     )
   }
