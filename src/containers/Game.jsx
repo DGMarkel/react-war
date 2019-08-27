@@ -146,7 +146,7 @@ class Game extends Component {
   }
 
   displayNewGameOptions = () => {
-    <div className="game">
+    <div className="newGame">
       <h1>New Game!</h1>
       <button onClick={()=>{this.shuffleCards()}}>Shuffle!</button>
       <button onClick={()=>{this.dealCards()}}>Deal Cards!</button>
@@ -157,7 +157,7 @@ class Game extends Component {
   render() {
     console.log(this.state)
     return (
-
+      <
     )
   }
 }
