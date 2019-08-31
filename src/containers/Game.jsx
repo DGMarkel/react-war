@@ -9,7 +9,7 @@ class Game extends Component {
       playerOne: [], // hands are dealt after user hits deal button
       playerTwo: [],
       gameIsInPlay: false,
-      cardsInPlay: [],
+      cardsInPlay: [], // contains current cards in play only
       gameState: "", // string indicating winner of hand
       winner: false,
     }
@@ -57,17 +57,7 @@ class Game extends Component {
 
       // playerOne wins the turn
       if (playerOneCard > playerTwoCard) {
-
-        this.setState( prevState => (
-          {
-            // moves winner's take to bottom of their deck
-            playerOne: this.winningCard(prevState.playerOne).concat(prevState.playerTwo[0]),
-            playerTwo: prevState.playerTwo.slice(1),  // removes losing card from loser's deck
-            gameState: "player one wins the turn"
-          }
-        ))
-        console.log("player one wins the turn")
-        this.displayCard(playerOneCard)
+        this.playerOneWins()
       }
 
       // playerTwo wins the turn
@@ -94,6 +84,19 @@ class Game extends Component {
         this.war();
       }
     }
+  }
+
+  playerOneWins = () => {
+    this.setState(
+      {
+        // moves winner's take to bottom of their deck
+        playerOne: this.winningCard(this.state.cardsInPlay[0]).concat(this.state.CardsinPlay[1]),
+        playerTwo: this.state.playerTwo.slice(1),  // removes losing card from loser's deck
+        gameState: "player one wins the turn"
+      }
+    )
+    console.log("player one wins the turn")
+    this.displayCard()
   }
 
   // moves winning card to bottom of winner's deck
