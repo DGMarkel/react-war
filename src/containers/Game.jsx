@@ -80,7 +80,6 @@ class Game extends Component {
         gameState: "player one wins the turn"
       }
     ))
-    console.log("player one wins the turn")
     this.displayCard()
   }
 
@@ -93,7 +92,6 @@ class Game extends Component {
         gameState: "player two wins the turn"
       }
     ))
-    console.log("player two wins the turn")
     this.displayCard()
   }
 
