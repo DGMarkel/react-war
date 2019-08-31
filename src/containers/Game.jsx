@@ -59,18 +59,13 @@ class Game extends Component {
       if (playerOneCard > playerTwoCard) {
         this.playerOneWins()
       }
-
       // playerTwo wins the turn
       else if (playerTwoCard > playerOneCard) {
         this.playerTwoWins()
       }
       // players draw the same card
       else if (playerOneCard === playerTwoCard) {
-        this.setState(
-          {
-            gameState: "war!"
-          }
-        )
+        this.setState({gameState: "war!"})
         this.war();
       }
     }
@@ -98,7 +93,7 @@ class Game extends Component {
         gameState: "player two wins the turn"
       }
     ))
-    console.log("player one wins the turn")
+    console.log("player two wins the turn")
     this.displayCard()
   }
 
