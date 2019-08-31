@@ -84,18 +84,13 @@ class Game extends Component {
         this.war();
       }
     }
-    else {
-      this.setState({
-        gameIsInPlay: false
-      })
-    }
   }
 
   playerOneWins = () => {
     this.setState(
       {
         // moves winner's take to bottom of their deck
-        playerOne: this.winningCard(this.state.cardsInPlay[0]).concat(this.state.CardsinPlay[1]),
+        playerOne: this.winningCard(this.state.playerOne).concat(this.state.cardsInPlay[1]),
         playerTwo: this.state.playerTwo.slice(1),  // removes losing card from loser's deck
         gameState: "player one wins the turn"
       }
