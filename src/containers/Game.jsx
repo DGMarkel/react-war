@@ -84,6 +84,11 @@ class Game extends Component {
         this.war();
       }
     }
+    else {
+      this.setState({
+        gameIsInPlay: false
+      })
+    }
   }
 
   playerOneWins = () => {
