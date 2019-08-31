@@ -57,7 +57,17 @@ class Game extends Component {
 
       // playerOne wins the turn
       if (playerOneCard > playerTwoCard) {
-        this.playerOneWins()
+
+        this.setState( prevState => (
+          {
+            // moves winner's take to bottom of their deck
+            playerOne: this.winningCard(prevState.playerOne).concat(prevState.playerTwo[0]),
+            playerTwo: prevState.playerTwo.slice(1),  // removes losing card from loser's deck
+            gameState: "player one wins the turn"
+          }
+        ))
+        console.log("player one wins the turn")
+        this.displayCard(playerOneCard)
       }
 
       // playerTwo wins the turn
@@ -84,19 +94,6 @@ class Game extends Component {
         this.war();
       }
     }
-  }
-
-  playerOneWins = () => {
-    this.setState(
-      {
-        // moves winner's take to bottom of their deck
-        playerOne: this.winningCard(this.state.playerOne).concat(this.state.cardsInPlay[1]),
-        playerTwo: this.state.playerTwo.slice(1),  // removes losing card from loser's deck
-        gameState: "player one wins the turn"
-      }
-    )
-    console.log("player one wins the turn")
-    this.displayCard()
   }
 
   // moves winning card to bottom of winner's deck
