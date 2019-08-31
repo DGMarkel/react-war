@@ -37,7 +37,8 @@ class Game extends Component {
 
   dealCards = () => {
     this.setState({
-      gameIsInPlay: true
+      gameIsInPlay: true,
+      deck: []
     })
     for(let i = 0; i <= 51; i++) {
       (i % 2 === 0)
