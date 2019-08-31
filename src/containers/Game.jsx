@@ -87,7 +87,9 @@ class Game extends Component {
   }
 
   playerOneWins = () => {
+    console.log(this.state.playerTwo)
     console.log(this.state.cardsInPlay)
+    console.log(this.state.cardsInPlay[1])
     this.setState(
       {
         // moves winner's take to bottom of their deck
