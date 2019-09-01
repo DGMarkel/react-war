@@ -116,7 +116,7 @@ class Game extends Component {
       for (let i = 2; i < 17 ; i += 3) {
         let playerOne;
         let playerTwo;
-        // if either player has < 3 cards for war, plays last card in deck; otherwise, plays 3rd card in deck 
+        // if either player has < 3 cards for war, plays last card in deck; otherwise, plays 3rd card in deck
         this.state.playerOne[i] === undefined ? playerOne = this.state.playerOne.length - 1 : playerOne =  this.state.playerOne[i]
         this.state.playerTwo[i] === undefined ? playerTwo = this.state.playerTwo.length - 1 : playerTwo =  this.state.playerTwo[i]
 
@@ -175,7 +175,6 @@ class Game extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="game">
         {this.state.gameIsInPlay ? this.displayCard() : this.displayNewGameOptions()}
