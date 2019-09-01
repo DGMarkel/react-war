@@ -51,10 +51,10 @@ class Game extends Component {
   playCard = () => {
     this.winner(); // checks to see if either player has won
     if (!this.state.winner) {
-      let playerOneCard = this.state.playerOne[0];
-      let playerTwoCard = this.state.playerTwo[0];
+      let playerOneCard = this.state.playerOne[0]; // selects card from top of player's deck
+      let playerTwoCard = this.state.playerTwo[0]; // selects card from top of player's deck
       this.setState({
-        cardsInPlay: [playerOneCard, playerTwoCard]
+        cardsInPlay: [playerOneCard, playerTwoCard] // sets cards in player from above
       })
 
       // playerOne wins the turn
@@ -77,7 +77,7 @@ class Game extends Component {
     this.setState( prevState => (
       {
         // moves winner's take to bottom of their deck
-        playerOne: this.wonCards(prevState.playerOne).concat(prevState.cardsInPlay[1]),
+        playerOne: this.wonCards(prevState.playerOne).concat(prevState.cardsInPlay[1]), // adds lost card to bottom of winner's deck
         playerTwo: prevState.playerTwo.slice(1),  // removes losing card from loser's deck
         gameState: "player one wins the turn"
       }
@@ -89,7 +89,7 @@ class Game extends Component {
     this.setState( prevState => (
       {
         // moves winner's take to bottom of their deck
-        playerTwo: this.wonCards(prevState.playerTwo).concat(prevState.cardsInPlay[0]),
+        playerTwo: this.wonCards(prevState.playerTwo).concat(prevState.cardsInPlay[0]), // adds lost card to bottom of winner's deck
         playerOne: prevState.playerOne.slice(1),  // removes losing card from loser's deck
         gameState: "player two wins the turn"
       }
@@ -116,6 +116,7 @@ class Game extends Component {
       for (let i = 2; i < 17 ; i += 3) {
         let playerOne;
         let playerTwo;
+        // if either player has < 3 cards for war, plays last card in deck; otherwise, plays 3rd card in deck 
         this.state.playerOne[i] === undefined ? playerOne = this.state.playerOne.length - 1 : playerOne =  this.state.playerOne[i]
         this.state.playerTwo[i] === undefined ? playerTwo = this.state.playerTwo.length - 1 : playerTwo =  this.state.playerTwo[i]
 
