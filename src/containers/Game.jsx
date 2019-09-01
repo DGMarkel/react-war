@@ -13,6 +13,7 @@ class Game extends Component {
       gameState: "", // string indicating winner of hand
       winner: false,
     }
+    this.baseState = this.state
   }
 
   componentDidMount() {
@@ -146,7 +147,6 @@ class Game extends Component {
     if (this.state.playerTwo.length === 0 && this.state.gameIsInPlay) {
       this.setState({
         winner: true,
-        gameIsInPlay: false,
         gameState: "Player One Wins!"
       })
     }
@@ -178,6 +178,15 @@ class Game extends Component {
     return (
       <div className="game">
         {this.state.gameIsInPlay ? this.displayCard() : this.displayNewGameOptions()}
+        { this.state.winner
+            ? <button onClick={()=>{
+                this.setState(this.baseState);
+                this.displayNewGameOptions();
+              }}>
+                Play Again?
+              </button>
+            : <p></p>
+        }
       </div>
     )
   }
