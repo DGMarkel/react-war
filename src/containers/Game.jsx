@@ -13,7 +13,7 @@ class Game extends Component {
       gameState: "", // string indicating winner of hand
       winner: false,
     }
-    this.baseState = this.state
+    this.baseState = this.state // used to reset empty state when players start a new game after a win
   }
 
   componentDidMount() {
@@ -77,7 +77,7 @@ class Game extends Component {
     this.setState( prevState => (
       {
         // moves winner's take to bottom of their deck
-        playerOne: this.winningCard(prevState.playerOne).concat(prevState.cardsInPlay[1]),
+        playerOne: this.wonCards(prevState.playerOne).concat(prevState.cardsInPlay[1]),
         playerTwo: prevState.playerTwo.slice(1),  // removes losing card from loser's deck
         gameState: "player one wins the turn"
       }
@@ -89,7 +89,7 @@ class Game extends Component {
     this.setState( prevState => (
       {
         // moves winner's take to bottom of their deck
-        playerTwo: this.winningCard(prevState.playerTwo).concat(prevState.cardsInPlay[0]),
+        playerTwo: this.wonCards(prevState.playerTwo).concat(prevState.cardsInPlay[0]),
         playerOne: prevState.playerOne.slice(1),  // removes losing card from loser's deck
         gameState: "player two wins the turn"
       }
@@ -98,13 +98,13 @@ class Game extends Component {
   }
 
   // moves winning card to bottom of winner's deck
-  winningCard = deck => {
+  wonCards = deck => {
     let winningDeck = deck.slice(1)
     winningDeck.push(deck[0])
     return winningDeck
   }
 
-  warWinner = (winningDeck, losingDeck, i) => {
+  wonCardsInWar = (winningDeck, losingDeck, i) => {
     // moves winner's played cards and take to bottom of winner's deck
     console.log(i)
     return winningDeck.slice(i + 1).concat(winningDeck.slice(0, i + 1), losingDeck.slice(0, i + 1))
@@ -122,7 +122,7 @@ class Game extends Component {
 
         if (playerOne > playerTwo) {
           this.setState( prevState => ({
-            playerOne: this.warWinner(prevState.playerOne, prevState.playerTwo, i),
+            playerOne: this.wonCardsInWar(prevState.playerOne, prevState.playerTwo, i),
             playerTwo: prevState.playerTwo.slice(i + 1) // add one to index to i to slice appropriate number of cards from deck
           }))
           return console.log(`playerOne won ${i + 1} cards!`)
@@ -130,7 +130,7 @@ class Game extends Component {
         else if (playerTwo > playerOne) {
           this.setState( prevState => ({
             playerOne: prevState.playerOne.slice(i + 1), // add one to index to i to slice appropriate number of cards from deck
-            playerTwo: this.warWinner(prevState.playerTwo, prevState.playerOne, i)
+            playerTwo: this.wonCardsInWar(prevState.playerTwo, prevState.playerOne, i)
           }))
           return console.log(`playerTwo won ${i + 1} cards!`)
         }
