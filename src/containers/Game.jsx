@@ -137,20 +137,19 @@ class Game extends Component {
   }
 
   winner = () => {
-    let winner = "The game is still in play";
     if (this.state.playerOne.length === 0 && this.state.gameIsInPlay) {
       this.setState({
-        winner: true
+        winner: true,
+        gameState: "Player Two Wins!"
       })
-      winner = "Player One"
     }
     if (this.state.playerTwo.length === 0 && this.state.gameIsInPlay) {
       this.setState({
-        winner: true
+        winner: true,
+        gameIsInPlay: false,
+        gameState: "Player One Wins!"
       })
-      winner = "Player Two"
     }
-    console.log(winner)
   }
 
   displayCard = () => {
