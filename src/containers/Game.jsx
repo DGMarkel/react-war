@@ -177,8 +177,13 @@ class Game extends Component {
   render() {
     return (
       <div className="game">
-        {this.state.gameIsInPlay ? this.displayCard() : this.displayNewGameOptions()}
-        { this.state.winner
+        {
+          // if the game is in play, display cards in play; otherwise, display new game options
+          this.state.gameIsInPlay ? this.displayCard() : this.displayNewGameOptions()
+        }
+        {
+          // if the game is won, render "Play again" button
+          this.state.winner
             ? <button onClick={()=>{
                 this.setState(this.baseState);
                 this.displayNewGameOptions();
