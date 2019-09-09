@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Card from '../components/Card'
 
-class Game extends Component {
+class War extends Component {
   constructor() {
     super();
     this.state={
@@ -197,4 +197,4 @@ class Game extends Component {
   }
 }
 
-export default Game
+export default War

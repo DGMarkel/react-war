@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Game from './containers/Game'
+import War from './containers/War'
 
 class App extends Component {
   constructor() {
@@ -15,7 +15,7 @@ class App extends Component {
       <div className="War!">
         {
           this.state.startGame
-            ? <Game />
+            ? <War />
             : <button onClick={() => {this.setState({startGame: true})}}>Let's Play!</button>
         }
       </div>
