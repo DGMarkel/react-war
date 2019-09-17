@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Menu from '../components/Menu'
 import StatusMessages from '../components/StatusMessages'
+import War from './War'
 
 export default class Board extends Component {
 
@@ -10,6 +11,8 @@ export default class Board extends Component {
       gameType: none
     }
   }
+
+
 
   render() {
     return (
