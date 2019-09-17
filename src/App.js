@@ -9,9 +9,8 @@ class App extends Component {
       <div className="board">
         <Board />
       </div>
-    )
+    );
   }
-
 
 }
 
