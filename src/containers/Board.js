@@ -8,8 +8,21 @@ export default class Board extends Component {
   constructor() {
     super();
     this.state={
-      gameType: 'none'
+      gameType: ''
     }
+  }
+
+  displayMenuOrGame = () => {
+    // super simplified version of what this container will eventually function like
+    return (
+      <div className="menu">
+      {
+        this.state.gameType
+          ? <War />
+          : <button onClick={() => {this.setState({gameType: 'war'})}}>Let's Play!</button>
+      }
+      </div>
+    )
   }
 
 
@@ -27,7 +40,7 @@ export default class Board extends Component {
         }
         <Menu />
         {
-          // component will display buttons like "Play game" "Play again" etc 
+          // component will display buttons like "Play game" "Play again" etc
         }
       </div>
     )
