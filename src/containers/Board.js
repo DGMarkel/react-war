@@ -46,4 +46,12 @@ export default class Board extends Component {
   //   )
   // }
 
+  render () {
+    return (
+      <div>
+        { this.displayMenuOrGame() }
+      </div>
+    )
+  }
+
 }
