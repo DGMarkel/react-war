@@ -3,6 +3,14 @@ import Menu from '../components/Menu'
 import StatusMessages from '../components/StatusMessages'
 
 export default class Board extends Component {
+
+  constructor() {
+    super();
+    this.state={
+      gameType: none
+    }
+  }
+
   render() {
     return (
       <div className="board">
