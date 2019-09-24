@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import StatusMessages from '../components/StatusMessages'
-import Board from './Menu'
+import Board from './Board'
 
 export default class Menu extends Component {
 
@@ -22,33 +22,13 @@ export default class Menu extends Component {
     )
   }
 
-
-
-  // render() {
-  //   return (
-  //     <div className="board">
-  //       {
-  //         // this is the "table" where games will be played
-  //       }
-  //       <StatusMessages />
-  //       { // component will display messages like "player one wins," etc.
-  //         // <GameInPlay /> component will display cards being played
-  //         // <PlayerDeck /> component will display each deck and number of cards in deck
-  //       }
-  //       <Menu />
-  //       {
-  //         // component will display buttons like "Play game" "Play again" etc
-  //       }
-  //     </div>
-  //   )
-  // }
-
   render () {
+    console.log(this.state.gameType)
     return (
       <div>
         {
-          this.state.gameType
-            ? <Board game={this.state.gameType}/>
+          this.state.gameType === "War"
+            ? <Board game={this.state.gameType} />
             : this.gameMenu()
         }
       </div>
