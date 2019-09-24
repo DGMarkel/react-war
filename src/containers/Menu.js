@@ -14,8 +14,10 @@ export default class Menu extends Component {
   gameMenu = () => {
     return (
       <div className="menu">
-        <button onClick={() => {this.setState({gameType: 'War'})}}>War!</button>
-        <button onClick={() => {this.setState({gameType: 'Solitaire'})}}>Solitaire!</button> // to be developed later
+        <button onClick={() => {this.setState({gameType:'War'})}}>War!</button>
+        <button onClick={() => {this.setState({gameType: 'Solitaire'})}}>Solitaire!</button>
+        { // second game to be developed later
+        }
       </div>
     )
   }
@@ -44,7 +46,11 @@ export default class Menu extends Component {
   render () {
     return (
       <div>
-        { this.displayMenuOrGame() }
+        {
+          this.state.gameType
+            ? <Board game={this.state.gameType}/>
+            : this.gameMenu()
+        }
       </div>
     )
   }
