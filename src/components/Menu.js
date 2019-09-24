@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import StatusMessages from '../components/StatusMessages'
-import Board from './Board'
+import Board from '../containers/Board'
 
 export default class Menu extends Component {
 

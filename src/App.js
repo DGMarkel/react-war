@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Menu from './containers/Menu'
+import Menu from './components/Menu'
 
 class App extends Component {
 
