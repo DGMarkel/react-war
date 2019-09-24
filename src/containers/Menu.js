@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Menu from '../components/Menu'
 import StatusMessages from '../components/StatusMessages'
 import War from './War'
 
@@ -10,19 +9,6 @@ export default class Menu extends Component {
     this.state={
       gameType: ''
     }
-  }
-
-  displayMenuOrGame = () => {
-    // super simplified version of what this container will eventually function like
-    return (
-      <div className="menu">
-      {
-        this.state.gameType
-          ? <War />
-          :
-      }
-      </div>
-    )
   }
 
   gameMenu = () => {
