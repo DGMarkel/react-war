@@ -3,7 +3,7 @@ import Menu from '../components/Menu'
 import StatusMessages from '../components/StatusMessages'
 import War from './War'
 
-export default class Board extends Component {
+export default class Menu extends Component {
 
   constructor() {
     super();
