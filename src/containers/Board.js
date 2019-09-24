@@ -19,8 +19,17 @@ export default class Menu extends Component {
       {
         this.state.gameType
           ? <War />
-          : <button onClick={() => {this.setState({gameType: 'war'})}}>Let's Play!</button>
+          :
       }
+      </div>
+    )
+  }
+
+  gameMenu = () => {
+    return (
+      <div className="menu">
+        <button onClick={() => {this.setState({gameType: 'War'})}}>War!</button>
+        <button onClick={() => {this.setState({gameType: 'Solitaire'})}}>Solitaire!</button> // to be developed later
       </div>
     )
   }
