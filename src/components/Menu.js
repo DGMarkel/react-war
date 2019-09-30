@@ -22,14 +22,20 @@ export default class Menu extends Component {
     )
   }
 
+  display = () => {
+    switch (this.state.gameType) {
+      case '':
+        return this.gameMenu()
+      case 'War':
+        return <War />
+    }
+  }
+
   render () {
-    console.log(this.state.gameType)
     return (
       <div>
         {
-          this.state.gameType === "War"
-            ? <Board game={this.state.gameType} />
-            : this.gameMenu()
+          this.display()
         }
       </div>
     )
