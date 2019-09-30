@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Card from '../components/Card'
+import StatusMessages from '../components/StatusMessages'
 
 class War extends Component {
   constructor() {
@@ -190,7 +191,7 @@ class War extends Component {
               </button>
             : <p></p>
         }
-        <footer>{this.state.gameState}</footer>
+        <StatusMessages gameState={this.state.gameState}/>
       </div>
     )
   }

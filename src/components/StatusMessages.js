@@ -1,10 +1,3 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class StatusMessages extends Component {
-  render() {
-    return (
-      <div className="status-messages">
-      </div>
-    )
-  }
-}
+export default function statusMessages(props) { return <footer>{props.gameState}</footer> }
