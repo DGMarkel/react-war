@@ -169,7 +169,6 @@ class War extends Component {
         <h1>New Game!</h1>
         <button onClick={()=>{this.shuffleCards()}}>Shuffle!</button>
         <button onClick={()=>{this.dealCards()}}>Deal Cards!</button>
-        <button onClick={()=>{this.playCard()}}>Play a turn</button>
       </div>
     )
   }
