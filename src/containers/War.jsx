@@ -156,9 +156,13 @@ class War extends Component {
 
   displayCard = () => {
     return (
-      <div>
-        <button onClick={()=>{this.playCard()}}>Play a turn</button>
-        {this.state.cardsInPlay.map( card => <Card rank={card} />)}
+      <div className="cards-display">
+        <div>
+          {this.state.cardsInPlay.map( card => <Card rank={card} />)}
+        </div>
+        <div>
+          <button onClick={()=>{this.playCard()}}>Play a turn</button>
+        </div>
       </div>
     )
   }

@@ -1,13 +1,21 @@
 .game {
   width: 50%;
   margin: auto;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.cards-display {
+  width: 50%;
+  margin: 10px auto;
 }
 
 .card {
+  display: inline-block;
   margin-left: 50px;
-  float: left;
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
+  border-radius: 5px;
   border-style: solid;
   color: #000000;
   font-size: 20pt;
