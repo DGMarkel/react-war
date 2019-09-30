@@ -179,23 +179,27 @@ class War extends Component {
 
   render() {
     return (
-      <div className="game">
-        {
-          // if the game is in play, display cards in play; otherwise, display new game options
-          this.state.gameIsInPlay ? this.displayCard() : this.displayNewGameOptions()
-        }
-        {
-          // if the game is won, render "Play again" button
-          this.state.winner
-            ? <button onClick={()=>{
-                this.setState(this.baseState);
-                this.displayNewGameOptions();
-              }}>
-                Play Again?
-              </button>
-            : <p></p>
-        }
-        <StatusMessages gameState={this.state.gameState}/>
+      <div className="board">
+        <div className="game">
+          {
+            // if the game is in play, display cards in play; otherwise, display new game options
+            this.state.gameIsInPlay ? this.displayCard() : this.displayNewGameOptions()
+          }
+          {
+            // if the game is won, render "Play again" button
+            this.state.winner
+              ? <button onClick={()=>{
+                  this.setState(this.baseState);
+                  this.displayNewGameOptions();
+                }}>
+                  Play Again?
+                </button>
+              : <p></p>
+          }
+        </div>
+        <div className="messages">
+          <StatusMessages gameState={this.state.gameState}/>
+        </div>
       </div>
     )
   }
