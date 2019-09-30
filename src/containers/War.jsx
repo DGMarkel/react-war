@@ -158,7 +158,6 @@ class War extends Component {
       <div>
         <button onClick={()=>{this.playCard()}}>Play a turn</button>
         {this.state.cardsInPlay.map( card => <Card rank={card} />)}
-        <h1>{this.state.gameState}</h1>
       </div>
     )
   }
@@ -191,6 +190,7 @@ class War extends Component {
               </button>
             : <p></p>
         }
+        <footer>{this.state.gameState}</footer>
       </div>
     )
   }
