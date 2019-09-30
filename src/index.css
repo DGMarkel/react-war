@@ -1,6 +1,11 @@
+.game {
+  width: 50%;
+  margin: auto;
+}
+
 .card {
-  float: left;
   margin-left: 50px;
+  float: left;
   border-color: #808080 #000000 #000000 #808080;
   border-width: 1px;
   border-style: solid;
