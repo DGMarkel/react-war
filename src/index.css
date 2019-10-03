@@ -7,20 +7,13 @@
   background-color: green;
 }
 
-.menu {
+.menu, .messages, .cards-display {
   width: 50%;
   margin: 0 auto;
   text-align: center;
 }
 
-.cards-display {
-  width: 50%;
-  margin: 10px auto;
-}
-
 .card {
-  display: inline-block;
-  margin-left: 50px;
   border: 3px solid red;
   border-radius: 5px;
   background-color: white;
@@ -30,6 +23,12 @@
   height: 5.00em;
 }
 
-.played {
+.unplayed {
+  display: inline-block;
+  margin-left: -3em;
+}
 
+.played {
+  display: inline-block;
+  margin-left: 50px;
 }
