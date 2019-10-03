@@ -158,10 +158,20 @@ class War extends Component {
     return (
       <div className="cards-display">
         <div>
+        <div>
+          { this.displayPlayerCards(this.state.playerOne) }
+        </div>
+        </div>
+        <div>
           {this.state.cardsInPlay.map( card => <Card className="played card" rank={card} />)}
         </div>
         <div>
           <button onClick={()=>{this.playCard()}}>Play a turn</button>
+        </div>
+        <div>
+        <div>
+          { this.displayPlayerCards(this.state.playerTwo) }
+        </div>
         </div>
       </div>
     )
@@ -209,9 +219,6 @@ class War extends Component {
         </div>
         <div className="messages">
           <StatusMessages gameState={this.state.gameState}/>
-        </div>
-        <div>
-          { this.displayPlayerCards(this.state.playerOne) }
         </div>
       </div>
     )
