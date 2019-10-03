@@ -7,6 +7,12 @@
   background-color: green;
 }
 
+.menu {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .cards-display {
   width: 50%;
   margin: 10px auto;
@@ -22,10 +28,4 @@
   font-size: 20pt;
   width:  3.75em;
   height: 5.00em;
-}
-
-footer {
-  bottom: 0;
-  position: fixed;
-  width: 100%;
 }

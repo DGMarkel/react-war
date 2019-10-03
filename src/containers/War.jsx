@@ -169,7 +169,7 @@ class War extends Component {
 
   displayNewGameOptions = () => {
     return (
-      <div className="new-game">
+      <div className="menu">
         <h1>New Game!</h1>
         <button onClick={()=>{this.shuffleCards()}}>Shuffle!</button>
         <button onClick={()=>{this.dealCards()}}>Deal Cards!</button>
