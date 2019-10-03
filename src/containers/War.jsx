@@ -167,6 +167,16 @@ class War extends Component {
     )
   }
 
+  displayPlayerCards = (player) => {
+    return (
+      <div className="player-cards-display">
+        {
+          player.map( card => <Card className="unplayed-card" />)
+        }
+      </div>
+    )
+  }
+
   displayNewGameOptions = () => {
     return (
       <div className="menu">
@@ -199,6 +209,9 @@ class War extends Component {
         </div>
         <div className="messages">
           <StatusMessages gameState={this.state.gameState}/>
+        </div>
+        <div>
+          { this.displayPlayerCards(this.state.playerOne) }
         </div>
       </div>
     )
