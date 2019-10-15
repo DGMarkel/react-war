@@ -14,7 +14,6 @@ class War extends Component {
       gameState: "", // string indicating winner of hand
       winner: false,
     }
-    this.baseState = this.state // used to reset empty state when players start a new game after a win
   }
 
   componentDidMount() {
