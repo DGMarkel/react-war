@@ -161,7 +161,7 @@ class War extends Component {
           { this.displayPlayerCards(this.state.playerOne) }
         </div>
         <div>
-          {this.state.cardsInPlay.map( (card, i) => <Card className="played card" rank={card} />)}
+          {this.state.cardsInPlay.map( (card, i) => <Card className="played card" key={i} rank={card} />)}
         </div>
         <div>
           {
@@ -181,7 +181,7 @@ class War extends Component {
     return (
       <div className="player-cards-display">
         {
-          player.map( card => <Card className="unplayed card" />)
+          player.map( (card, i) => <Card className="unplayed card" key={i} />)
         }
       </div>
     )
