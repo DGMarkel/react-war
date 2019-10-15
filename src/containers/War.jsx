@@ -158,9 +158,7 @@ class War extends Component {
     return (
       <div className="cards-display">
         <div>
-        <div>
           { this.displayPlayerCards(this.state.playerOne) }
-        </div>
         </div>
         <div>
           {this.state.cardsInPlay.map( card => <Card className="played card" rank={card} />)}
@@ -169,9 +167,7 @@ class War extends Component {
           <button onClick={()=>{this.playCard()}}>Play a turn</button>
         </div>
         <div>
-        <div>
           { this.displayPlayerCards(this.state.playerTwo) }
-        </div>
         </div>
       </div>
     )
