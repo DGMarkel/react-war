@@ -18,6 +18,10 @@ class War extends Component {
   }
 
   componentDidMount() {
+    this.setDeck()
+  }
+
+  setDeck = () => {
     // builds deck of cards with 4 suits of 13 cards
     for (let i = 0; i<=3; i++) {
       this.setState(prevState => ({
