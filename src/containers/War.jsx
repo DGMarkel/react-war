@@ -14,13 +14,10 @@ class War extends Component {
       gameState: "", // string indicating winner of hand
       winner: false,
     }
+    this.baseState = this.state // used to reset empty state when players start a new game after a win
   }
 
   componentDidMount() {
-    this.setDeck()
-  }
-
-  setDeck = () => {
     // builds deck of cards with 4 suits of 13 cards
     for (let i = 0; i<=3; i++) {
       this.setState(prevState => ({
